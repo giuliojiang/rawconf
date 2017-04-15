@@ -19,6 +19,6 @@
   "dependencies": {
     "async": "^2.3.0",
     "fs": "0.0.1-security",
-    "jassert.js": "0.0.2"
+    "jassert.js": "0.0.3"
   }
 }
