@@ -1,4 +1,5 @@
 var async = require("async");
+var jassert = require("jassert.js");
 
 var test_testsuite = require(__dirname + "/test_testsuite.js");
 
@@ -28,13 +29,7 @@ async.waterfall([
         process.exit(1);
     } else {
         console.log("TESTSUITE completed");
-        console.log("PASSED "+ stats["pass"] +" tests");
-        if (stats["fail"] > 0) {
-            console.log("FAILED " + stats["fail"] + " tests");
-            process.exit(1);
-        } else {
-            console.log("ALL TESTS PASSED");
-            process.exit(0);
-        }
+        console.log(jassert.format_stats(stats));
+        process.exit(jassert.all_tests_passed ? 0 : 1);
     }
 });
