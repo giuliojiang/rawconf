@@ -37,17 +37,15 @@ var config = null;
 var load_config_file = function(callback) {
     fs.readFile(config_file_path, (err, data) => {
         if (err) {
-            console.error(err);
-            callback("Unable to read file ["+ config_file_path +"] from disk");
+            callback(err);
             return;
         }
         try {
             config = JSON.parse(data);
             callback(null)
         } catch(err) {
-            console.error(err);
             config = null;
-            callback("Unable to parse JSON file");
+            callback(err);
             return;
         }
     });
@@ -64,9 +62,14 @@ var set_configuration_file = function(levels, relative_path, callback) {
     load_config_file(callback);
 };
 
+// Returns the parsed configuration object
+// return: configuration object
+var get_config = function() {
+    return config;
+};
 
 module.exports = {
-    config: config,
+    get_config: get_config,
     set_configuration_file: set_configuration_file,
     generate_file_path: generate_file_path
 };
