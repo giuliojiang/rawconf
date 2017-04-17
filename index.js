@@ -1,5 +1,11 @@
 var fs = require('fs');
 
+var base_dir = __dirname + "/../../";
+
+var set_base_dir = function(new_base_dir) {
+    base_dir = new_base_dir;
+};
+
 var default_relative_path = "config/server_config.json";
 // Generates the absolute file path of the location of the configuration
 // param "levels" [int]: Number of levels of parent directories to traverse
@@ -14,7 +20,7 @@ var generate_file_path = function(levels, relative_path) {
     }
     
     // Header of the absolute path
-    out_path = __dirname;
+    out_path = base_dir;
     
     // Generate the (../)* of the path
     for (var i = 0; i < levels; i++) {
@@ -71,5 +77,6 @@ var get_config = function() {
 module.exports = {
     get_config: get_config,
     set_configuration_file: set_configuration_file,
-    generate_file_path: generate_file_path
+    generate_file_path: generate_file_path,
+    set_base_dir: set_base_dir
 };

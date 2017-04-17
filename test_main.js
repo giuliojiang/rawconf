@@ -5,6 +5,7 @@ var test_testsuite = require(__dirname + "/test_testsuite.js");
 
 async.waterfall([
 
+    // Run all tests
     function(callback) {
         async.each(test_testsuite.tests, (test, callback) => {
             test((err, res) => {

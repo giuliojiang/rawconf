@@ -2,6 +2,7 @@ var async = require("async");
 var jassert = require("jassert.js");
 
 var rawconf = require(__dirname + "/index.js");
+rawconf.set_base_dir(__dirname);
 
 var tests = [];
 
