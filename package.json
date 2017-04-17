@@ -1,6 +1,6 @@
 {
   "name": "rawconf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Basic json configuration loader for NodeJS",
   "main": "index.js",
   "scripts": {
